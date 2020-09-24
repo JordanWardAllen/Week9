@@ -1,24 +1,27 @@
-// module.exports = {
-//     finddata: function(db, result){
-//         const collection = db.collection('products');
-//         collection.find({}).toArray()
-//             .then(response => result(response))
-//             .catch(err => console.log(err))
-//     }
-// }
+const fs = require('fs');
 
 
 module.exports = function(db, app){
     app.get('/api/read', function(req, res){
-        console.log('read fired')
         const collection = db.collection('products');
         collection.find({}).toArray((err, data) =>{
             if (err){
                 console.log(err)
             } else {
                 res.send(data)
-                console.log(data)
+                fs.readFile('../dataExternal.json', (err, JSONdata) => {
+                    if (err) throw err;
+                stringedData = JSON.stringify(data)
+                    console.log(JSONdata)
+                    console.log(stringedData)
+                    fs.writeFile('../dataExternal.json', stringedData, (err) =>{
+                        if (err) throw err;
+                    })
+                })
+
             }
         })
     })
+
+    
 }

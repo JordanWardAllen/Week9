@@ -26,6 +26,7 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, func
     const db = client.db(dbName);
 
     require('./routes/read.js')(db, app);
+    require('./routes/getProduct.js')(db, app);
     require('./routes/add.js')(db, app, ObjectID);
     require('./routes/update.js')(db, app, ObjectID);
     require('./routes/remove.js')(db, app, ObjectID);

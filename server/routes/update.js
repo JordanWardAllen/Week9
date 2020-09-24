@@ -14,21 +14,25 @@
 
 
 module.exports = function(db, app, ObjectID){
-    app.get('/api/update', function(req, res){
+    app.post('/api/update', function(req, res){
 
         if (!req.body){
             return res.sendStatus(400)
         }
 
-        product = req.body
-        var objectid = new ObjectID(product.objid)
-
+        product = req.body.id
         const collection = db.collection('products');
-        collection.updateOne({_id:objectid}, {$set: {id: product.id, name : product.name , price: product.name, description: product.description, quantity: product.quantity}}, (err, data) =>{
+        var objectid = new ObjectID(product.id)    
+        console.log(req.body)
+        collection.updateOne({ id :product },{$set:{name : req.body.name , price: req.body.price, description: req.body.description, quantity: req.body.quantity}}, {upsertL: true}, 
+            (err, data) =>{
             if (err){
                 console.log(err)
             } else {
-                res.send({'ok' : product.objid});
+                collection.find({}).toArray((err, data) => {
+                    console.log(data)
+                    res.send(data)
+                })
             }
         })
     })

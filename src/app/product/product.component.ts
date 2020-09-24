@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from "rxjs";
-import { Product } from '../product';
+import { HttpClient } from '@angular/common/http';
 import { ProductDataService } from "../service/product-data.service";
 
 
@@ -32,6 +29,17 @@ export class ProductComponent implements OnInit {
     this.productDataService.removeProduct(IdToDelete).subscribe((data) =>{
       this.productList = data;
     })
+  }
+
+
+  IdToUpdate(IdToUpdate){
+    // console.log(IdToUpdate);
+    localStorage.setItem('currentID' , IdToUpdate);
+
+    // this.productDataService.updateProduct(IdToUpdate).subscribe((data) =>{
+    this.router.navigateByUrl('updateProduct');
+      // this.productList = data;
+    // })
   }
 
 }

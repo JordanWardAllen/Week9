@@ -21,7 +21,13 @@ export class ProductDataService {
     return this.http.get<any>("http://localhost:3000/api/read");
   }
 
+  getProduct(IdToUpdate){
+    console.log(IdToUpdate + "was passed")
+    return this.http.post<any>("http://localhost:3000/api/getProduct", {"id" : IdToUpdate});
+  }
+
   updateProduct(product: Product){
+    console.log(product)
     return this.http.post<any>("http://localhost:3000/api/update", product);
   }
 

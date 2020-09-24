@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 
 
@@ -12,13 +12,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'product store';
   
-  // user: User = {username: sessionStorage.getItem("username"), birthdate: sessionStorage.getItem("birthdate"), age: sessionStorage.getItem("age"), email: sessionStorage.getItem("email"), pwd: sessionStorage.getItem("pwd"), valid: sessionStorage.getItem("valid") }
-  constructor(private router: Router){}
+  
+  constructor(){}
 
-  clearAndMove(){
-    localStorage.clear();
-    this.router.navigateByUrl('/')
-  }
 
   
 }
