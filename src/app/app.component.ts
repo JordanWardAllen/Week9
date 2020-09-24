@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'chat';
+  title = 'product store';
   
   // user: User = {username: sessionStorage.getItem("username"), birthdate: sessionStorage.getItem("birthdate"), age: sessionStorage.getItem("age"), email: sessionStorage.getItem("email"), pwd: sessionStorage.getItem("pwd"), valid: sessionStorage.getItem("valid") }
   constructor(private router: Router){}

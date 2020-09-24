@@ -7,21 +7,23 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component'
-import { RegisterService } from './service/register.service';
+import { ProductDataService } from "./service/product-data.service";
+import { AddProductComponent } from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProductComponent
+    ProductComponent,
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule, RouterModule,AppRoutingModule, FormsModule, HttpClientModule, CommonModule
 
   ],
-  providers: [RegisterService],
+  providers: [ProductDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

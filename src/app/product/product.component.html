@@ -1,25 +1,30 @@
-<!-- <div *ngIf="isSuper; else elseBlock"> -->
-    
-    <div class="container">
-        <div class="bg-light  flex-wrap align-content-right ">
-            <div class="form-group">
-                <h2>Create product</h2>
-                <form>
-                    <label>Name: </label>
-                    <input type="text"  class="form-control" placeholder="Enter product name:" [(ngModel)]="prodName" name="prodName">
-                    <label>Price: </label>
-                    <input type="text"   class="form-control" placeholder="Enter product price:" [(ngModel)]="prodPrice" name="prodPrice">
-                    <label>Quantity: </label>
-                    <input type="text"  class="form-control" placeholder="Enter product quantity:" [(ngModel)]="prodQuant" name="prodQuant">
-                    <label>Description: </label>
-                    <input type="text"  class="form-control" placeholder="Enter product description:" [(ngModel)]="prodDesc" name="prodDesc">
-                </form>
-                <br>
-                <button (click)="createProd(prodName, prodPrice, prodQuant, prodDesc)" class="btn btn-primary">submit</button>
-                <button (click)="test()" class="btn btn-primary">test</button>
-            </div>
+<div class="container">
+    <div class="bg-light  flex-wrap align-content-right ">
+
+        <div *ngFor="let product of productList">
+        <h3>{{product.name}}</h3>
+        <ul >
+            <li>{{product.id}}</li>
+            <li>{{product.price}}</li>
+            <li>{{product.quantity}}</li>
+            <li>{{product.description}}</li>
+
+        </ul>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="bg-light  flex-wrap align-content-right ">
+        <div class="form-group">
+            <h2>Delete product</h2>
+            <form>
+                <label>Enter ID of Product to delete: </label>
+                <input type="text"  class="form-control" placeholder="Enter product name:" [(ngModel)]="IdToDelete" name="IdToDelete">
+
+            </form>
+            <br>
+            <button (click)="DeleteProd(IdToDelete)" class="btn btn-primary">Delete</button>
         </div>
     </div>
-
-<!-- </div> -->
-<ng-template #elseBlock>Please log in to with an account with Super Admin permissions to create new user accounts, thank you.</ng-template>
+</div>
