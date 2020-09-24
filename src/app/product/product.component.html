@@ -1,21 +1,21 @@
 <div class="container">
     <div class="bg-light  flex-wrap align-content-right ">
-
         <div *ngFor="let product of productList">
-        <h3>{{product.name}}</h3>
-        <ul >
-            <li>{{product.id}}</li>
-            <li>{{product.price}}</li>
-            <li>{{product.quantity}}</li>
-            <li>{{product.description}}</li>
+            <h4>{{product.name}}</h4>
+            <ul >
+                <li>Id: {{product.id}}</li>
+                <li>Price: {{product.price}}</li>
+                <li>Quantity: {{product.quantity}}</li>
+                <li>Description: {{product.description}}</li>
 
-        </ul>
-        <button (click)="IdToUpdate(product.id)" class="btn btn-primary">Update</button>
+            </ul>
+            <button (click)="IdToUpdate(product.id)" class="btn btn-primary">Update</button>
+            <button (click)="DeleteProd(product.id)" class="btn btn-primary">Delete</button>
     </div>
     </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <div class="bg-light  flex-wrap align-content-right ">
         <div class="form-group">
             <h2>Delete product</h2>
@@ -28,4 +28,4 @@
             <button (click)="DeleteProd(IdToDelete)" class="btn btn-primary">Delete</button>
         </div>
     </div>
-</div>
+</div> -->

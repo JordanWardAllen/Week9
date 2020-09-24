@@ -5,12 +5,14 @@
             <div class="form-group">
                 <h2>Create product</h2>
                 <form>
+                    <label>ID: </label>
+                    <input type="text"  class="form-control" placeholder="Enter ID:" [(ngModel)]="prodID" name="prodID">
                     <label>Name: </label>
                     <input type="text"  class="form-control" placeholder="Enter product name:" [(ngModel)]="prodName" name="prodName">
                     <label>Price: </label>
-                    <input type="text"   class="form-control" placeholder="Enter product price:" [(ngModel)]="prodPrice" name="prodPrice">
+                    <input type="number"   class="form-control"  [(ngModel)]="prodPrice" name="prodPrice" placeholder="$">
                     <label>Quantity: </label>
-                    <input type="text"  class="form-control" placeholder="Enter product quantity:" [(ngModel)]="prodQuant" name="prodQuant">
+                    <input type="number"  class="form-control" placeholder="Enter product quantity:" [(ngModel)]="prodQuant" name="prodQuant">
                     <label>Description: </label>
                     <input type="text"  class="form-control" placeholder="Enter product description:" [(ngModel)]="prodDesc" name="prodDesc">
                 </form>

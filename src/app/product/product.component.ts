@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+    localStorage.clear();
     this.productDataService.getProducts().subscribe((data) =>{
       this.productList = data;
     })
@@ -33,13 +34,9 @@ export class ProductComponent implements OnInit {
 
 
   IdToUpdate(IdToUpdate){
-    // console.log(IdToUpdate);
     localStorage.setItem('currentID' , IdToUpdate);
-
-    // this.productDataService.updateProduct(IdToUpdate).subscribe((data) =>{
     this.router.navigateByUrl('updateProduct');
-      // this.productList = data;
-    // })
+
   }
 
 }

@@ -23,8 +23,10 @@ module.exports = function(db, app, ObjectID){
         product = req.body.id
         const collection = db.collection('products');
         var objectid = new ObjectID(product.id)    
-        console.log(req.body)
-        collection.updateOne({ id :product },{$set:{name : req.body.name , price: req.body.price, description: req.body.description, quantity: req.body.quantity}}, {upsertL: true}, 
+        console.log(objectid)
+        // collection.updateOne({ id :product },{$set:{name : req.body.name , price: req.body.price, description: req.body.description, quantity: req.body.quantity}}, {upsertL: true}, 
+        //     (err, data) =>{
+        collection.updateOne({ _id :objectid },{$set:{name : req.body.name , price: req.body.price, description: req.body.description, quantity: req.body.quantity}}, {upsertL: true}, 
             (err, data) =>{
             if (err){
                 console.log(err)

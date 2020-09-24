@@ -1,17 +1,21 @@
-module.exports = function(db, app, ObjectID){
+module.exports = function(db, app){
     app.post('/api/add', function(req, res){
-        console.log('add api fired')
         if (!req.body){
             return res.sendStatus(400)
         }
         product = req.body
-
         const collection = db.collection('products');
-        collection.insertOne({id: product.id, name : product.name , price: product.name, description: product.description, quantity: product.quantity}, (err, data) =>{
-            if (err){
-                console.log(err)
+        collection.find({'id' : product.id}).count((err, count) =>{
+            if (count == 0){
+                collection.insertOne({id: product.id, name : product.name , price: product.name, description: product.description, quantity: product.quantity}, (err, data) =>{
+                    if (err){
+                        console.log(err)
+                    } else {
+                        res.send(data);
+                    }
+                })
             } else {
-                res.send({'ok' : product});
+                res.send({valid : false});
             }
         })
     })

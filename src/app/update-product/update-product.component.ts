@@ -27,7 +27,7 @@ export class UpdateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.IdToUpdate =  localStorage.getItem('currentID');
-    console.log(this.IdToUpdate)
+    // console.log(this.IdToUpdate)
     this.productDataService.getProduct(this.IdToUpdate).subscribe((data) =>{
       this.currentProduct = data;
       this.prodName = data.name
@@ -46,7 +46,6 @@ export class UpdateProductComponent implements OnInit {
     this.productDataService.updateProduct(currentProduct).subscribe((data: any) => {
       console.log(currentProduct);
       this.router.navigateByUrl('');
-      // this.productList = data;
     })
   }
   }

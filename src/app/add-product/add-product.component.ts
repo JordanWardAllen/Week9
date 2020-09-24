@@ -18,11 +18,12 @@ export class AddProductComponent implements OnInit {
   constructor(private router: Router, public productDataService: ProductDataService, private http:HttpClient) { }
 
   prodPrice = 0;
+  prodID = null;
   prodName = "";
   prodQuant = 0;
   prodDesc = "";
   newProduct = {};
-
+  success = null;
 
 
   ngOnInit(): void {
@@ -30,12 +31,15 @@ export class AddProductComponent implements OnInit {
 
 
   createProd(prodName, prodPrice, prodQuant, prodDesc){
-    // console.log('product creation.')
-    let newProduct = { id: "ExampleID", name: this.prodName, price: this.prodPrice, quantity : this.prodQuant, description: this.prodDesc};
+    let newProduct = { id: this.prodID, name: this.prodName, price: this.prodPrice, quantity : this.prodQuant, description: this.prodDesc};
     this.productDataService.addProduct(newProduct).subscribe((data: any) => {
       console.log(data)
-      this.router.navigateByUrl('');
-
+      this.success = data;
+      if (this.success.valid == false){
+        alert("This ID is not valid, please try another.")
+      }else{ 
+        this.router.navigateByUrl('');
+      }
       })
     }
   }

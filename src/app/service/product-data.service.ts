@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
-import { Observable } from "rxjs";
 import { Product } from '../product';
 
 @Injectable({
@@ -22,12 +21,10 @@ export class ProductDataService {
   }
 
   getProduct(IdToUpdate){
-    console.log(IdToUpdate + "was passed")
     return this.http.post<any>("http://localhost:3000/api/getProduct", {"id" : IdToUpdate});
   }
 
   updateProduct(product: Product){
-    console.log(product)
     return this.http.post<any>("http://localhost:3000/api/update", product);
   }
 
