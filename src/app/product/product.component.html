@@ -1,0 +1,24 @@
+<!-- <div *ngIf="isSuper; else elseBlock"> -->
+    
+    <div class="container">
+        <div class="bg-light  flex-wrap align-content-right ">
+            <div class="form-group">
+                <h2>Create product</h2>
+                <form>
+                    <!-- <label>Name: </label>
+                    <input type="text"  class="form-control" placeholder="Enter product name:" [(ngModel)]="prodName" name="prodName">
+                    <label>Price: </label>
+                    <input type="text"   class="form-control" placeholder="Enter product price:" [(ngModel)]="prodPrice" name="prodPrice">
+                    <label>Quantity: </label>
+                    <input type="text"  class="form-control" placeholder="Enter product quantity:" [(ngModel)]="produQuant" name="produQuant">
+                    <label>Description: </label>
+                    <input type="text"  class="form-control" placeholder="Enter product description:" [(ngModel)]="prodDesc" name="prodDesc"> -->
+                </form>
+                <br>
+                <button (click)="createProd()" class="btn btn-primary">submit</button>
+            </div>
+        </div>
+    </div>
+
+<!-- </div> -->
+<ng-template #elseBlock>Please log in to with an account with Super Admin permissions to create new user accounts, thank you.</ng-template>
