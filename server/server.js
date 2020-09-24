@@ -24,21 +24,51 @@ app.get('/', function(req, res){
 });
 
 
+// app.get('/api/createProduct', function(req, res){
+//     console.log('test button fired')
+//     res.sendFile(__dirname + '/../dist/index');
+// });
 
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
-// const url = 'mongodb://localhost:4200/mydb';
+
 
 MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
     if (err) {return console.log(err)} else { console.log('database created!')}
     const dbName = 'mydb';
     const db = client.db(dbName);
-    var querycb = require('./querycallback.js');
 
-    querycb.updatedata(db, function(res){
+    // app.get('/api/createProduct', function(req, res){
+    //     var querycb = require('./read.js');
+    //     querycb.updatedata(db, function(res){
+    //         console.log(res)
+    //         // client.close()
+    //     })
+    // });
+    
+    var readQuery = require('./read.js');
+    readQuery.finddata(db, function(res){
         console.log(res)
+        client.close()
     })
 
+    // var removeQuery = require('./remove.js');
+    // removeQuery.removedata(db, "1", function(res){
+    //     client.close()
+    // })
 
+    // var addQuery = require('./add.js');
+    // addQuery.adddata(db, "1", 3, function(res){
+    //         console.log(res)
+    //     client.close()
+    // })
+
+    // var updateQuery = require('./update.js');
+    // updateQuery.updatedata(db, "2", 7, function(res){
+    //     console.log(res)
+    //     client.close()
+    // })
+    
+    
 });

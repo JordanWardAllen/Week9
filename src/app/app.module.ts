@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ProductComponent } from './product/product.component'
+import { RegisterService } from './service/register.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ProductComponent } from './product/product.component'
     BrowserModule, RouterModule,AppRoutingModule, FormsModule, HttpClientModule, CommonModule
 
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
